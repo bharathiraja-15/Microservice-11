@@ -5,9 +5,10 @@ pipeline {
         stage('Build & Tag Docker Image') {
             steps {
                 script {
-                    withDockerRegistry(credentialsId: 'docker-cred', toolName: 'docker') {
-                        sh "docker build -t bharathiraja3234/adservice:latest ."
-                    }
+                    sh '''
+                        echo 'your-password-or-token' | docker login -u bharathiraja3234 --password-stdin
+                        docker build -t bharathiraja3234/adservice:latest .
+                    '''
                 }
             }
         }
@@ -15,9 +16,7 @@ pipeline {
         stage('Push Docker Image') {
             steps {
                 script {
-                    withDockerRegistry(credentialsId: 'docker-cred', toolName: 'docker') {
-                        sh "docker push bharathiraja3234/adservice:latest "
-                    }
+                    sh 'docker push bharathiraja3234/adservice:latest'
                 }
             }
         }
