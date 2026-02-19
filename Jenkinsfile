@@ -16,5 +16,10 @@ pipeline {
             steps {
                 script {
                     withDockerRegistry(credentialsId: 'docker-cred', toolName: 'docker') {
-                        sh "docker push bharathiraja3234/adservice:latest "
+                        sh "docker push bharathiraja3234/adservice:latest"
                     }
+                }
+            }
+        }
+    } // <-- This closing brace was missing
+}
