@@ -31,7 +31,7 @@ pipeline {
                     serverUrl: 'https://68087C52B99A899BD073DE439055C58B.sk1.eu-north-1.eks.amazonaws.com'
                 ]]) {
 
-                    sh "kubectl get all -n webapps"
+                    sh "kubectl get svc -n webapps"
 
                 }
             }
